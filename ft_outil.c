@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_outil.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 18:38:36 by asaracut          #+#    #+#             */
-/*   Updated: 2024/10/17 05:54:13 by asaracut         ###   ########.fr       */
+/*   Created: 2024/10/30 02:16:11 by asaracut          #+#    #+#             */
+/*   Updated: 2024/10/31 00:01:07 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf.h"
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
-	char	cc;
 
-	cc = (char) c;
 	i = 0;
-	if (s[i] == cc)
-		return ((char *) &s[i]);
-	while (s[i])
-	{
+	while (str[i])
 		i++;
-		if (s[i] == cc)
-			return ((char *) &s[i]);
+	return (i);
+}
+
+void	ft_putstr_fd(char *str, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(fd, &str[i], 1);
+		i++;
 	}
-	return (0);
 }

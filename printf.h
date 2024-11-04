@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 18:37:59 by asaracut          #+#    #+#             */
-/*   Updated: 2024/10/17 02:31:42 by asaracut         ###   ########.fr       */
+/*   Created: 2024/10/30 02:16:14 by asaracut          #+#    #+#             */
+/*   Updated: 2024/10/31 00:04:03 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PRINTF_H
+# define PRINTF_H
 
-int	ft_isalnum(int c)
-{
-	if ((ft_isalpha(c)) || (ft_isdigit(c)))
-		return (1);
-	return (0);
-}
+# include <stddef.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
+
+int	ft_printf(const char *main, ...);
+size_t	ft_strlen(const char *str);
+void	ft_putstr_fd(char *str, int fd);
+
+#endif

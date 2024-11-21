@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 00:57:17 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/21 04:35:33 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/21 05:52:33 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_arg(va_list args, const char arg_print, int size)
 	else if (arg_print == 'p')
 		size = 1;
 	else if (arg_print == 'd' || arg_print == 'i')
-		size = ft_print_nb(va_arg(args, char *), 0);
+		size = ft_print_nb(va_arg(args, int), 0);
 	else if (arg_print == 'u')
 		size = 1;
 	else if (arg_print == 'u')
@@ -41,12 +41,12 @@ int	ft_arg(va_list args, const char arg_print, int size)
 
 int	ft_printf(const char *str, ...)
 {
-	int	i;
-	int	size_print;
+	int		i;
+	int		size_print;
+	va_list	args;
 
 	i = 0;
 	size_print = 0;
-	va_list args;
 	va_start(args, str);
 	while (str[i])
 	{

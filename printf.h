@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 02:16:14 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/21 05:52:55 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/21 06:05:18 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ size_t	ft_strlen(const char *str);
 int		ft_print_str(char *str);
 int		ft_print(char c);
 int		ft_print_nb(int n, int len);
+int		ft_print_unsigned_nb(unsigned int n, int len);
 
 #endif

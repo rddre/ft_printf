@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 03:55:37 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/21 05:50:12 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/21 06:07:20 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main(int ac, char **test)
 {
-	ft_printf(" %c | %% | %s | %d\n", 'A', "str", 455);
-	   printf(" %c | %% | %s | %d\n", 'A', "str", 455);
+	ft_printf(" %c | %% | %s | %d | %u \n", 'A', "str", 455, 2147483649);
+	   printf(" %c | %% | %s | %d | %u \n", 'A', "str", 455, 2147483649);
 	
 	return (0);
 }

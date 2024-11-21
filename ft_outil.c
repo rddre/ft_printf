@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 02:16:11 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/21 05:51:20 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/21 06:02:11 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,24 @@ int	ft_print_nb(int n, int len)
 	}
 	while (--index >= 0)
 		len += ft_print(print[index]);
+	return (len);
+}
+
+int	ft_print_unsigned_nb(unsigned int n, int len)
+{
+	char	print[12];
+	int		index = 0;
+
+	if (n == 0)
+		return (ft_print('0'));
+
+	while (n != 0)
+	{
+		print[index++] = (n % 10) + '0';
+		n /= 10;
+	}
+	while (--index >= 0)
+		len += ft_print(print[index]);
+
 	return (len);
 }

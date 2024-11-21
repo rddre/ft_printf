@@ -1,4 +1,4 @@
-SRC		= ft_printf.c
+SRC		= ft_printf.c ft_outil.c
 OBJS	= $(SRC:.c=.o)
 NAME	= libftprintf.a
 CC		= gcc
@@ -22,3 +22,5 @@ fclean:	clean
 	$(RM) $(NAME)
 
 re:	fclean all
+
+.PHONY:		all clean fclean re

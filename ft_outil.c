@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 02:16:11 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/21 06:02:11 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/22 06:54:58 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,26 @@ int	ft_print_unsigned_nb(unsigned int n, int len)
 		len += ft_print(print[index]);
 
 	return (len);
+}
+
+int	ft_puthexa(unsigned int nbr, char format)
+{
+	int	i;
+ 
+	i = 0;
+	if (nbr >= 16)
+	{
+		i += ft_puthexa((nbr / 16), format);
+		i += ft_puthexa((nbr % 16), format);
+	}
+	else
+	{
+		if (nbr <= 9)
+			i += ft_putchar(nbr + '0');
+		else if (format == 'x')
+			i += ft_putchar(nbr - 10 + 'a');
+		else if (format == 'X')
+			i += ft_putchar(nbr - 10 + 'A');
+	}
+	return (i);
 }

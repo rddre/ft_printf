@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:59:21 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/22 12:16:38 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:30:52 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_ptr_len(uintptr_t num)
 
 int	ft_put_ptr(uintptr_t num)
 {
-	int secu;
+	int	secu;
 
 	secu = 0;
 	if (num >= 16)

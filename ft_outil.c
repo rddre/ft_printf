@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 02:16:11 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/22 13:07:14 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:21:45 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,44 @@ int	ft_print_unsigned_nb(unsigned int n, int len)
 		n /= 10;
 	}
 	while (--index >= 0)
-		len += ft_print(print[index]);
+	{
+		if (ft_print(print[index]) == -1)
+			return (-1);
+		len++;
+	}
 	return (len);
 }
 
 int	ft_puthexa(unsigned int nbr, char format)
 {
 	int	i;
+	int	ret;
 
 	i = 0;
+	ret = 0;
 	if (nbr >= 16)
 	{
-		i += ft_puthexa((nbr / 16), format);
-		i += ft_puthexa((nbr % 16), format);
+		ret = ft_puthexa((nbr / 16), format);
+		if (ret == -1)
+			return (-1);
+		i += ret;
+
+		ret = ft_puthexa((nbr % 16), format);
+		if (ret == -1)
+			return (-1);
+		i += ret;
 	}
 	else
 	{
 		if (nbr <= 9)
-			i += ft_print(nbr + '0');
+			ret = ft_print(nbr + '0');
 		else if (format == 'x')
-			i += ft_print(nbr - 10 + 'a');
+			ret = ft_print(nbr - 10 + 'a');
 		else if (format == 'X')
-			i += ft_print(nbr - 10 + 'A');
+			ret = ft_print(nbr - 10 + 'A');
+		if (ret == -1)
+			return (-1);
+		i += ret;
 	}
 	return (i);
 }

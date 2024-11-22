@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 02:16:11 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/22 07:20:31 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:07:14 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ size_t	ft_strlen(const char *str)
 int	ft_print_str(char *str)
 {
 	if (!str)
-		return (0);
-	write(1, str, ft_strlen(str));
-	return (ft_strlen(str));
+		return (write(1, "(null)", 6));
+	return (write(1, str, ft_strlen(str)));
 }
 
 int	ft_print_nb(int n, int len)
@@ -42,7 +41,8 @@ int	ft_print_nb(int n, int len)
 		return (ft_print('0'));
 	if (n < 0)
 	{
-		ft_print('-');
+		if (ft_print('-') == -1)
+			return (-1);
 		n = -n;
 		len++;
 	}
@@ -52,7 +52,11 @@ int	ft_print_nb(int n, int len)
 		n /= 10;
 	}
 	while (--index >= 0)
-		len += ft_print(print[index]);
+	{
+		if (ft_print(print[index]) == -1)
+			return (-1);
+		len++;
+	}
 	return (len);
 }
 

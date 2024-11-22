@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:59:21 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/22 07:12:08 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:16:38 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ int	ft_ptr_len(uintptr_t num)
 	return (len);
 }
 
-void	ft_put_ptr(uintptr_t num)
+int	ft_put_ptr(uintptr_t num)
 {
+	int secu;
+
+	secu = 0;
 	if (num >= 16)
 	{
 		ft_put_ptr(num / 16);
@@ -35,24 +38,27 @@ void	ft_put_ptr(uintptr_t num)
 	else
 	{
 		if (num <= 9)
-			ft_print(num + '0');
+			secu = ft_print(num + '0');
 		else
-			ft_print(num - 10 + 'a');
+			secu = ft_print(num - 10 + 'a');
 	}
+	return (secu);
 }
 
-int	ft_print_p(unsigned long long ptr)
+int	ft_print_p(unsigned long long ptr, int size, int secu)
 {
-	int	print_length;
-
-	print_length = 0;
-	print_length += write(1, "0x", 2);
+	secu = write(1, "0x", 2);
+	size += secu;
+	if (secu < 0)
+		return (-1);
 	if (ptr == 0)
-		print_length += write(1, "0", 1);
+		size += write(1, "0", 1);
 	else
 	{
-		ft_put_ptr(ptr);
-		print_length += ft_ptr_len(ptr);
+		secu = ft_put_ptr(ptr);
+		size += ft_ptr_len(ptr);
 	}
-	return (print_length);
+	if (secu < 0)
+		return (-1);
+	return (size);
 }

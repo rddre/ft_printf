@@ -1,4 +1,4 @@
-SRC		= ft_printf.c ft_outil.c
+SRC		= ft_printf.c ft_outil.c ft_outil_p.c
 OBJS	= $(SRC:.c=.o)
 NAME	= libftprintf.a
 CC		= gcc

@@ -6,11 +6,11 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:59:21 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/22 07:04:10 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/22 07:12:08 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf_h"
+#include "printf.h"
 
 int	ft_ptr_len(uintptr_t num)
 {
@@ -35,9 +35,9 @@ void	ft_put_ptr(uintptr_t num)
 	else
 	{
 		if (num <= 9)
-			ft_putchar_fd((num + '0'), 1);
+			ft_print(num + '0');
 		else
-			ft_putchar_fd((num - 10 + 'a'), 1);
+			ft_print(num - 10 + 'a');
 	}
 }
 

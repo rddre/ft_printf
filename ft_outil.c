@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 02:16:11 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/22 06:54:58 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/22 07:20:31 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ size_t	ft_strlen(const char *str)
 
 int	ft_print_str(char *str)
 {
+	if (!str)
+		return (0);
 	write(1, str, ft_strlen(str));
 	return (ft_strlen(str));
 }
@@ -57,11 +59,11 @@ int	ft_print_nb(int n, int len)
 int	ft_print_unsigned_nb(unsigned int n, int len)
 {
 	char	print[12];
-	int		index = 0;
+	int		index;
 
+	index = 0;
 	if (n == 0)
 		return (ft_print('0'));
-
 	while (n != 0)
 	{
 		print[index++] = (n % 10) + '0';
@@ -69,14 +71,13 @@ int	ft_print_unsigned_nb(unsigned int n, int len)
 	}
 	while (--index >= 0)
 		len += ft_print(print[index]);
-
 	return (len);
 }
 
 int	ft_puthexa(unsigned int nbr, char format)
 {
 	int	i;
- 
+
 	i = 0;
 	if (nbr >= 16)
 	{
@@ -86,11 +87,11 @@ int	ft_puthexa(unsigned int nbr, char format)
 	else
 	{
 		if (nbr <= 9)
-			i += ft_putchar(nbr + '0');
+			i += ft_print(nbr + '0');
 		else if (format == 'x')
-			i += ft_putchar(nbr - 10 + 'a');
+			i += ft_print(nbr - 10 + 'a');
 		else if (format == 'X')
-			i += ft_putchar(nbr - 10 + 'A');
+			i += ft_print(nbr - 10 + 'A');
 	}
 	return (i);
 }

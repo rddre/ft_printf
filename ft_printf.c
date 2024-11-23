@@ -6,7 +6,7 @@
 /*   By: asaracut <asaracut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 00:57:17 by asaracut          #+#    #+#             */
-/*   Updated: 2024/11/22 14:02:41 by asaracut         ###   ########.fr       */
+/*   Updated: 2024/11/23 02:22:20 by asaracut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,35 @@ int	ft_arg(va_list args, const char arg_print, int size)
 	return (size);
 }
 
+int	ft_purcent(const char *str, int *i, va_list args, int *size_print)
+{
+	int	secu;
+
+	secu = ft_arg(args, str[*i + 1], 0);
+	if (secu < 0)
+		return (-1);
+	*size_print += secu;
+	(*i)++;
+	return (0);
+}
+
+int	ft_char(char c, int *size_print)
+{
+	int	secu;
+
+	secu = ft_print(c);
+	if (secu < 0)
+		return (-1);
+	*size_print += secu;
+	return (0);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	int		i;
 	int		size_print;
-	int		secu;
 	va_list	args;
 
-	secu = 0;
 	i = 0;
 	size_print = 0;
 	va_start(args, str);
@@ -51,18 +72,13 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%' && str[i + 1])
 		{
-			secu = ft_arg(args, str[i + 1], 0);
-			if (secu < 0)
+			if (ft_purcent(str, &i, args, &size_print) < 0)
 				return (-1);
-			size_print += secu;
-			i++;
 		}
 		else
 		{
-			secu = ft_print(str[i]);
-			if (secu < 0)
+			if (ft_char(str[i], &size_print) < 0)
 				return (-1);
-			size_print += secu;
 		}
 		i++;
 	}
